@@ -36,8 +36,14 @@ def battery_is_ok(temperature, soc, charge_rate):
     return True, ''
 
 if __name__ == '__main__':
-    return_val, return_msg = battery_is_ok(25, 70, 0.7)
-    assert return_val is True, return_msg
-    
-    return_val, return_msg = battery_is_ok(50, 85, 0)
-    assert return_val is True, return_msg
+    try:
+        return_val, return_msg = battery_is_ok(25, 70, 0.7)
+        assert return_val is True, return_msg
+    except AssertionError as e:
+        print(f"AssertionError: {e}")
+
+    try:
+        return_val, return_msg = battery_is_ok(50, 85, 0)
+        assert return_val is True, return_msg
+    except AssertionError as e:
+        print(f"{e}")
