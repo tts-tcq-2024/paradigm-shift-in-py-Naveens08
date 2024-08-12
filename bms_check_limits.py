@@ -1,5 +1,4 @@
-# main.py
-from battery_checks import temperature_check, state_of_charge_check, charge_rate_check
+from bms_limit_check_functions import temperature_check, state_of_charge_check, charge_rate_check
 
 def battery_is_ok(temperature, soc, charge_rate):
     check_funcs = [temperature_check, state_of_charge_check, charge_rate_check]
