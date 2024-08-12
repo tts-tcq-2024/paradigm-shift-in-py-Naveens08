@@ -1,18 +1,22 @@
+from bms_limit_check_functions import temperature_check, state_of_charge_check, charge_rate_check
 
 def battery_is_ok(temperature, soc, charge_rate):
-  if temperature < 0 or temperature > 45:
-    print('Temperature is out of range!')
-    return False
-  elif soc < 20 or soc > 80:
-    print('State of Charge is out of range!')
-    return False
-  elif charge_rate > 0.8:
-    print('Charge rate is out of range!')
-    return False
-
-  return True
-
+    check_funcs = [temperature_check, state_of_charge_check, charge_rate_check]
+    params = [temperature, soc, charge_rate]
+    for check_func, param in zip(check_funcs, params):
+        valid, message = check_func(param)
+        if not valid:
+            return valid, message
+    return True, ''
 
 if __name__ == '__main__':
-  assert(battery_is_ok(25, 70, 0.7) is True)
-  assert(battery_is_ok(50, 85, 0) is False)
+    try:
+        return_val, return_msg = battery_is_ok(25, 70, 0.7)
+        assert return_val is True, return_msg
+    except AssertionError as e:
+        print(f"AssertionError: {e}")
+    try:
+        return_val, return_msg = battery_is_ok(50, 85, 0)
+        assert return_val is True, return_msg
+    except AssertionError as e:
+        print(f"{e}")
