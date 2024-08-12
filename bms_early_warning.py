@@ -17,6 +17,6 @@ def check_parameter_warning(param_name, value):
     low_warning, high_warning = WARNING_THRESHOLDS[param_name]
     if low_warning is not None and value < low_warning:
         return True, WARNING_MESSAGES[param_name]["low"]
-    elif value > high_warning:
+    if value > high_warning:
         return True, WARNING_MESSAGES[param_name]["high"]
     return True, ''
