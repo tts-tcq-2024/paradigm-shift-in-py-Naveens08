@@ -26,5 +26,4 @@ def charge_rate_check(charge_rate):
     valid, message = check_parameter_in_range("charge_rate", charge_rate)
     if not valid:
         return False, message
-    # Only high warning for charge rate
     return check_parameter_warning("charge_rate", charge_rate)
