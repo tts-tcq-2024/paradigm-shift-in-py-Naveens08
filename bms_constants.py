@@ -19,9 +19,3 @@ WARNING_MESSAGES = {
         "high": "Warning: Charge rate is approaching upper limit!"
     }
 }
-
-WARNING_THRESHOLDS = {
-    "temperature": calculate_warning_thresholds("temperature"),
-    "soc": calculate_warning_thresholds("soc"),
-    "charge_rate": calculate_warning_thresholds("charge_rate")
-}
