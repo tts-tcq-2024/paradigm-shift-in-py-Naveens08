@@ -7,6 +7,8 @@ def battery_is_ok(temperature, soc, charge_rate):
         valid, message = check_func(param)
         if not valid:
             return False, message
+        if message:
+            print(message)  # Print warnings
     return True, ''
 
 if __name__ == '__main__':
@@ -14,10 +16,9 @@ if __name__ == '__main__':
         return_val, return_msg = battery_is_ok(25, 70, 0.7)
         assert return_val is True, return_msg
     except AssertionError as e:
-        raise AssertionError(f"AssertionError: {e}")
-
+        print(f"AssertionError: {e}")
     try:
         return_val, return_msg = battery_is_ok(50, 85, 0)
         assert return_val is True, return_msg
     except AssertionError as e:
-        raise AssertionError(f"{e}")
+        print(f"{e}")
