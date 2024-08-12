@@ -8,7 +8,7 @@ def battery_is_ok(temperature, soc, charge_rate):
         if not valid:
             return False, message
         if message:
-            print(message)  # Print warnings
+            return True, message
     return True, ''
 
 if __name__ == '__main__':
