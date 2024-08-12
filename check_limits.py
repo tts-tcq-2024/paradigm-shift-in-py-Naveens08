@@ -6,9 +6,7 @@ def battery_is_ok(temperature, soc, charge_rate):
     for check_func, param in zip(check_funcs, params):
         valid, message = check_func(param)
         if not valid:
-            return False, message
-        if message:
-            return True, message
+            return valid, message
     return True, ''
 
 if __name__ == '__main__':
