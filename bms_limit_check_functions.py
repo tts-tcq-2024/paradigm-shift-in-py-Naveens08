@@ -1,14 +1,6 @@
 from bms_early_warning import check_parameter_warning
 from bms_constants import PARAMETER_LIMITS
-
-def check_parameter_in_range(param_name, value):
-    limits = PARAMETER_LIMITS[param_name]
-    min_limit = limits["min"]
-    max_limit = limits["max"]
-
-    if (min_limit is not None and value < min_limit) or value > max_limit:
-        return False, f"{param_name.capitalize()} is out of range!"
-    return True, ''
+from bms_check_range_functions import check_parameter_in_range
 
 def temperature_check(temperature):
     valid, message = check_parameter_in_range("temperature", temperature)
