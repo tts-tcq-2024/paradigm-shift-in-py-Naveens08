@@ -3,9 +3,10 @@ from bms_constants import PARAMETER_LIMITS
 
 def check_parameter_in_range(param_name, value):
     limits = PARAMETER_LIMITS[param_name]
-    if limits["min"] is not None and value < limits["min"]:
-        return False, f"{param_name.capitalize()} is out of range!"
-    if value > limits["max"]:
+    min_limit = limits["min"]
+    max_limit = limits["max"]
+
+    if (min_limit is not None and value < min_limit) or value > max_limit:
         return False, f"{param_name.capitalize()} is out of range!"
     return True, ''
 
